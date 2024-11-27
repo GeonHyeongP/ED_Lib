@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(OpenCV)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+message(${OpenCV_INCLUDE_DIRS})
+
 add_library(EDLib STATIC
         ED.cpp
         ED.h
