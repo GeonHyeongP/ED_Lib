@@ -3,10 +3,7 @@ project(ED_Lib)
 
 set(CMAKE_CXX_STANDARD 11)
 
-find_package(OpenCV)
-include_directories(${OpenCV_INCLUDE_DIRS})
-
-message(${OpenCV_INCLUDE_DIRS})
+find_package(opencv)
 
 add_library(EDLib STATIC
         ED.cpp
