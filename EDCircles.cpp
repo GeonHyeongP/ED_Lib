@@ -3,6 +3,8 @@
 using namespace cv;
 using namespace std;
 
+#define ADD_CIRCLE  0
+
 EDCircles::EDCircles(Mat srcImage)
 	: EDPF(srcImage)
 {
@@ -55,10 +57,12 @@ EDCircles::EDCircles(Mat srcImage)
 			double maxDistanceBetweenEndPoints = MAX(3, r / 4);
 
 			// If almost closed loop, then try to fit a circle/ellipse
-			if (d <= maxDistanceBetweenEndPoints) {
+			if (d <= maxDistanceBetweenEndPoints) 
+			{
 				double xc, yc, r, circleFitError = 1e10;
-
+#if ADD_CIRCLE == 1
 				CircleFit(x, y, noPixels, &xc, &yc, &r, &circleFitError);
+#endif				
 
 				EllipseEquation eq;
 				double ellipseFitError = 1e10;
@@ -273,7 +277,9 @@ EDCircles::EDCircles(ED obj)
 			if (d <= maxDistanceBetweenEndPoints) {
 				double xc, yc, r, circleFitError = 1e10;
 
+#if ADD_CIRCLE == 1 
 				CircleFit(x, y, noPixels, &xc, &yc, &r, &circleFitError);
+#endif				
 
 				EllipseEquation eq;
 				double ellipseFitError = 1e10;
@@ -488,7 +494,9 @@ EDCircles::EDCircles(EDColor obj)
 			if (d <= maxDistanceBetweenEndPoints) {
 				double xc, yc, r, circleFitError = 1e10;
 
+#if ADD_CIRCLE == 1
 				CircleFit(x, y, noPixels, &xc, &yc, &r, &circleFitError);
+#endif				
 
 				EllipseEquation eq;
 				double ellipseFitError = 1e10;
